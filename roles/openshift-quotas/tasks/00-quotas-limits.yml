@@ -33,7 +33,7 @@
     src: "{{ openshift_templates_dir.path }}/core-resource-limits-{{ openshift_project }}.yml"
 
 - name: get a list of dcs in {{ openshift_project }}
-  k8s_info:
+  k8s_facts:
     kind: DeploymentConfig
     namespace:  "{{ openshift_project }}"
   register: dc_list

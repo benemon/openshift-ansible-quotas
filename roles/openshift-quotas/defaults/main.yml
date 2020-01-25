@@ -22,9 +22,3 @@ container_default_request_memory: 128Mi
 project_max_pods: 8
 project_max_cpu: 2
 project_max_memory: 2Gi
-
-# example projects list
-openshift_projects:
-- test1
-- test2
-- test3
