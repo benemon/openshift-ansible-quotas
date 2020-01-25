@@ -1,0 +1,7 @@
+---
+# tasks file for openshift-quotas
+
+- include_tasks: 00-quotas-limits.yml
+  loop: "{{ openshift_projects }}"
+  loop_control: 
+    loop_var: openshift_project

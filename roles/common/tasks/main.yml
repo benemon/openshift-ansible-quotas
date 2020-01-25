@@ -1,0 +1,8 @@
+---
+- name: ensure python dependencies
+  pip:
+    name:
+      - k8s
+      - openshift
+    extra_args: --user
+  
