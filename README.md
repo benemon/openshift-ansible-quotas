@@ -32,7 +32,7 @@ A role to idle all deployments across a list of projects/namespaces in OpenShift
 
 ## Known Issues and Points of Note
 
-* Test execution against a small subset of representative projects first"
+* Test execution against a small subset of representative projects first
 * Won't be able to accurately remove resource requests / limits from multi-container Pods, e.g. Sidecars. Manual intervention will be required for these.
 * Doesn't enforce user-level quotas
 * "One size doesn't fit all" for either quotas or limit ranges. Whilst the values in this playbook are fairly middle of the road, they may not necessarily apply to your use cases.
