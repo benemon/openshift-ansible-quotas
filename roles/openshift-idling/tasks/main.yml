@@ -1,0 +1,19 @@
+---
+# tasks file for openshift-idling
+
+- name: create temporary directory
+  tempfile:
+    state: directory
+    suffix: idling
+  register: openshift_idling_dir 
+
+- include_tasks: 00-idling.yml
+  loop: "{{ openshift_projects }}"
+  loop_control: 
+    loop_var: openshift_project
+
+- name: clear up temporary directory
+  file:
+    path: "{{ openshift_idling_dir.path }}"
+    state: absent
+  when: openshift_idling_dir.path is defined

@@ -1,0 +1,36 @@
+---
+# tasks file for openshift-idling
+- name: idle all deployments within {{ openshift_project }}
+  block:
+    - name: check for existence of {{ openshift_project }}
+      k8s_facts:
+        kind: Project
+        name: "{{ openshift_project }}"
+      register: project_result
+    
+    - name: check project result
+      fail:
+        msg: "project {{ openshift_project }} doesn't exist, or this user doesn't have permissions to access it"
+      when: not project_result.resources
+
+    - name: get a list of dcs in {{ openshift_project }}
+      k8s_facts:
+        kind: DeploymentConfig
+        namespace:  "{{ openshift_project }}"
+      register: dc_list   
+
+    - name: create resource names file
+      lineinfile:
+        path: "{{ openshift_idling_dir.path }}/{{ openshift_project }}-names"
+        line: "{{ item.metadata.name }}"
+        create: yes
+      loop: "{{ dc_list.resources | flatten(levels=1) }}"
+      ignore_errors: true
+
+    - name: idle all deployments in {{ openshift_project }}
+      command: "oc idle --resource-names-file {{ openshift_idling_dir.path }}/{{ openshift_project }}-names"
+      ignore_errors: true
+
+  rescue:
+    - debug:
+        msg: "skipping to next item, or finishing if no further items exist"
