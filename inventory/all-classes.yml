@@ -1,5 +1,5 @@
 ---
 openshift:
   hosts:
-    all:
+    all-classes:
       ansible_connection: local
