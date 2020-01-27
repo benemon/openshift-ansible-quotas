@@ -1,0 +1,5 @@
+---
+openshift:
+  hosts:
+    all:
+      ansible_connection: local

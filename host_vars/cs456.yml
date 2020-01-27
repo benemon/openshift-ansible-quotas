@@ -1,0 +1,5 @@
+---
+# example projects list
+openshift_projects:
+- test2
+- test3

@@ -1,0 +1,5 @@
+---
+openshift:
+  hosts:
+    cs456:
+      ansible_connection: local

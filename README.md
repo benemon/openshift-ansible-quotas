@@ -19,15 +19,21 @@ A role to idle all deployments across a list of projects/namespaces in OpenShift
 
 ## Usage
 
+Each 'host' in the context of this role is an alias to `localhost`. This allows us to configure different groups of projects to target based on a host alias. In the examples provided, the host `cs123` is an alias to localhost which operates on an OpenShift project called `test1`.
+
+By comparison, the host `cs456` is also an alias to localhost, but it operates on OpenShift projects `test2` and `test3`.
+
+Finally, `all-classes` represents a combined list of all projects in the OpenShift cluster.
+
 ### openshift-quotas
 
-* Update the `group_vars/all` file with the list of projects to operate against
-* Update the `group_vars/all` file with any changes to the default quotas and limitranges specified in `roles/openshift-quotas/defaults/main.yml`
+* Update the `host_vars/*hostname*.yml` file with the list of projects to operate against
+* Update the `host_vars/*hostname*.yml` file with any changes to the default quotas and limitranges specified in `roles/openshift-quotas/defaults/main.yml`
 * `ansible-playbook site-install.yml -t quotas`
 
 ### openshift-idling
 
-* Update the `group_vars/all` file with the list of projects to operate against
+* Update the `host_vars/*hostname*.yml` file with the list of projects to operate against
 * `ansible-playbook site-install.yml -t idling`
 
 ## Known Issues and Points of Note
