@@ -28,7 +28,7 @@
       ignore_errors: true
 
     - name: idle all deployments in {{ openshift_project }}
-      command: "oc idle --resource-names-file {{ openshift_idling_dir.path }}/{{ openshift_project }}-names"
+      command: "oc idle --resource-names-file {{ openshift_idling_dir.path }}/{{ openshift_project }}-names -n {{ openshift_project }}"
       ignore_errors: true
 
   rescue:
