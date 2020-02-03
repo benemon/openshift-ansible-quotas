@@ -2,23 +2,23 @@
 # defaults file for openshift-quotas
 
 # limitranges for pods
-pod_max_cpu: 500m
-pod_min_cpu: 10m
-pod_max_memory: 1Gi
+pod_max_cpu: 1
+pod_min_cpu: 50m
+pod_max_memory: 2Gi
 pod_min_memory: 100Mi
 
-container_max_cpu: 500m
-container_min_cpu: 20m
-container_max_memory: 1Gi
+container_max_cpu: 1
+container_min_cpu: 50m
+container_max_memory: 2Gi
 container_min_memory: 128Mi
 
 container_default_cpu: 100m
 container_default_memory: 128Mi
 
-container_default_request_cpu: 20m
+container_default_request_cpu: 50m
 container_default_request_memory: 128Mi
 
 # project quotas
-project_max_pods: 8
-project_max_cpu: 2
+project_max_pods: 4
+project_max_cpu: 1
 project_max_memory: 2Gi
