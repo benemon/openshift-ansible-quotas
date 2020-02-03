@@ -6,5 +6,5 @@ metadata:
 spec:
   hard:
     pods: "{{ project_max_pods }}" 
-    requests.cpu: "{{ project_max_cpu }}"
-    requests.memory: "{{ project_max_memory }}"
+    limits.cpu: "{{ project_max_cpu }}"
+    limits.memory: "{{ project_max_memory }}"
