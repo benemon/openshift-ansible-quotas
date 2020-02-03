@@ -52,7 +52,7 @@
       register: dc_list
 
     - name: patch dcs in {{ openshift_project }} to remove existing requests and limits
-      command: "oc patch dc/{{ item.metadata.name }} --type json -p '[{ \"op\": \"remove\", \"path\": \"/spec/template/spec/containers/0/resources\" }]'}} -n {{ item.metadata.namespace }}"
+      command: "oc patch dc/{{ item.metadata.name }} --type json -p '[{ \"op\": \"remove\", \"path\": \"/spec/template/spec/containers/0/resources\" }]' -n {{ item.metadata.namespace }}"
       loop: "{{ dc_list.resources | flatten(levels=1) }}"
       ignore_errors: true
 
